@@ -14,27 +14,23 @@ const Home = () => {
 
   useEffect(() => {
     if (diaryList.length >= 1) {
-      const firstDay = new Date(
+      const FirstDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth(),
         1
       ).getTime();
 
-      const lastDay = new Date(
+      const LastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
         0
       ).getTime();
 
       setData(
-        diaryList.filter((it) => firstDay <= it.Date && it.Date <= lastDay)
+        diaryList[0].filter((it) => it.date >= FirstDay && it.date <= LastDay)
       );
     }
   }, [diaryList, curDate]);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const increaseMonth = () => {
     setCurDate(
