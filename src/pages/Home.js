@@ -13,6 +13,11 @@ const Home = () => {
   const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
   useEffect(() => {
+    const titleElement = document.getElementsByTagName("title");
+    titleElement.innerHTML = `하루 일기장`;
+  }, []);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       const FirstDay = new Date(
         curDate.getFullYear(),
@@ -23,7 +28,10 @@ const Home = () => {
       const LastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,
+        59
       ).getTime();
 
       console.log(diaryList);
